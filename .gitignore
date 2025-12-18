@@ -1,0 +1,32 @@
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ML artifacts
+artifacts/
+model/
+reports/
+mlruns/
+
+# Test & coverage
+.pytest_cache/
+.coverage
+
+# Docker
+*.log
+
+mlflow.db
