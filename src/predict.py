@@ -2,10 +2,18 @@ from fastapi import FastAPI, Form
 from fastapi.responses import HTMLResponse
 import joblib
 import numpy as np
+import os
 
 app = FastAPI()
 
-model = joblib.load("model/xgboost_model.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+MODEL_PATH = os.path.abspath(
+    os.path.join(BASE_DIR, "..", "model", "xgboost_model.pkl")
+)
+
+model = joblib.load(MODEL_PATH)
+
 
 
 # FRONTEND

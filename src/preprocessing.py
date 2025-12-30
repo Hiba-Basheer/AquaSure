@@ -55,7 +55,7 @@ def remove_outliers_iqr(X: np.ndarray) -> np.ndarray:
 def preprocess(df: pd.DataFrame = None) -> tuple:
     """
     Perform full preprocessing pipeline:
-    - Load data (if not provided)
+    - Load data 
     - Handle missing values
     - Remove outliers
     - Train-test split
@@ -89,7 +89,6 @@ def preprocess(df: pd.DataFrame = None) -> tuple:
         y = df["Potability"]
     else:
         # Handle case where target might not be present (e.g. inference)
-        # For this specific refactor I'll assume training context as per original code
         logger.warning(
             "Potability column missing, assuming inference mode or invalid data for training"
         )
@@ -99,7 +98,6 @@ def preprocess(df: pd.DataFrame = None) -> tuple:
     # Handle missing values
     logger.info("Imputing missing values using median strategy")
     imputer = SimpleImputer(strategy="median")
-    # Wrap in DataFrame to keep columns if needed, but SimpleImputer returns ndarray usually.
     X = imputer.fit_transform(X)
 
     # Outlier handling
@@ -129,8 +127,7 @@ def preprocess(df: pd.DataFrame = None) -> tuple:
         logger.info("Preprocessing completed successfully")
         return X_train, X_test, y_train, y_test
     else:
-        # If no target, just return processed X (unlikely path for this specific task
-        # but good practice)
+        # If no target, just return processed X
         return X
 
 
